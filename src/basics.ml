@@ -1,19 +1,23 @@
 let abs x =
-  if x >= 0 then x
-  else (-x)
+  if x >= 0 then x else (-x)
 
 (***********************************)
 (* Part 1: Non-Recursive Functions *)
 (***********************************)
+let rev_tup (a, b) = (b, a)
 
-let rev_tup (tup : 'a * 'b) = failwith "unimplemented"
-let rev_triple (tup : 'a * 'b * 'c) = failwith "unimplemented"
+let rev_triple (a, b, c) = (c, b, a)
 
-let is_odd x = failwith "unimplemented"
+let is_odd x = x mod 2 <> 0
 
-let is_older (date1: int * int * int) (date2: int * int * int) = failwith "unimplemented"
+let is_older (y1, m1, d1) (y2, m2, d2) =
+  if y1 < y2 then true
+  else if y1 > y2 then false
+  else if m1 < m2 then true
+  else if m1 > m2 then false
+  else d1 < d2
 
-let to_us_format (date1: int * int * int) = failwith "unimplemented"
+let to_us_format (y, m, d) = (m, d, y)
 (*******************************)
 (* Part 2: Recursive Functions *)
 (*******************************)
