@@ -32,8 +32,17 @@ let rec fac n =
 (* Part 3: Lists *)
 (*****************)
 
-let rec get_nth ((idx:int), (lst: 'a list)) = failwith "unimplemented"
+let rec get_nth ((idx:int), (lst:'a list)) =
+  match idx, lst with
+  | 0, x :: _ -> x
+  | n, _ :: t when n > 0 -> get_nth (n - 1, t)
+  | _ -> failwith "index out of bounds"
 
-let larger lst1 lst2 = failwith "unimplemented"
+let larger lst1 lst2 =
+  let rec len = function [] -> 0 | _ :: t -> 1 + len t in
+  let l1, l2 = len lst1, len lst2 in
+  if l1 > l2 then lst1 else if l2 > l1 then lst2 else []
 
-let sum lst1 lst2 = failwith "unimplemented"
+let sum lst1 lst2 =
+  let rec s = function [] -> 0 | h :: t -> h + s t in
+  s lst1 + s lst2
